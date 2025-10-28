@@ -293,28 +293,46 @@
 .testimonial-card {
   background: white;
   border-radius: 15px;
-  padding: 30px;
+  padding: 20px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   max-width: 350px;
   flex: 1 1 300px;
+  text-align: center;
 }
 
-.testimonial-stars {
-  color: #ffb017;
-  font-size: 1.5rem;
+.testimonial-label {
+  font-weight: 700;
+  color: #f47f2b;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.before-after-image {
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+  border-radius: 10px;
   margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 1.1rem;
+  border: 2px dashed #ccc;
+  position: relative;
+  overflow: hidden;
 }
 
-.testimonial-text {
-  font-style: italic;
-  margin-bottom: 20px;
-  color: #333;
-  line-height: 1.6;
+.before-after-image::before {
+  content: '📷';
+  font-size: 3rem;
+  opacity: 0.3;
 }
 
 .testimonial-author {
   font-weight: 700;
-  color: #f47f2b;
+  color: #333;
+  font-size: 0.9rem;
 }
 
 @media (max-width: 768px) {
@@ -326,6 +344,13 @@
   }
   .social-proof h2 {
     font-size: 1.8rem;
+  }
+  .before-after-image {
+    height: 300px;
+  }
+  .testimonial-card {
+    max-width: 100%;
+    margin-bottom: 20px;
   }
 }
 </style>
@@ -343,22 +368,34 @@
 <!-- Social Proof Section -->
 <section class="social-proof">
   <div class="container">
-    <h2>⭐ O que Nossos Clientes Dizem</h2>
+    <h2>⭐ Resultados Reais dos Nossos Clientes</h2>
     <div class="testimonials">
       <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"Perdi 12kg em apenas 3 meses com BurnPeak! Minha energia aumentou drasticamente e me sinto incrível!"</p>
-        <p class="testimonial-author">— Maria Silva, São Paulo</p>
+        <div class="testimonial-label">ANTES & DEPOIS</div>
+        <div class="before-after-image">
+          <span style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.9); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; color: #666;">ANTES</span>
+          <span style="position: absolute; bottom: 10px; right: 10px; background: rgba(255,255,255,0.9); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; color: #666;">DEPOIS</span>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.9rem; color: #999;">Imagem depoimento 1</div>
+        </div>
+        <p class="testimonial-author">Maria Silva - São Paulo</p>
       </div>
       <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"Incrível como funciona rápido! Primeira semana e já vi resultados. Recomendo para todos!"</p>
-        <p class="testimonial-author">— João Santos, Rio de Janeiro</p>
+        <div class="testimonial-label">ANTES & DEPOIS</div>
+        <div class="before-after-image">
+          <span style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.9); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; color: #666;">ANTES</span>
+          <span style="position: absolute; bottom: 10px; right: 10px; background: rgba(255,255,255,0.9); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; color: #666;">DEPOIS</span>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.9rem; color: #999;">Imagem depoimento 2</div>
+        </div>
+        <p class="testimonial-author">João Santos - Rio de Janeiro</p>
       </div>
       <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"Melhor investimento que fiz! Não precisei fazer dietas malucas, o BurnPeak fez toda a diferença."</p>
-        <p class="testimonial-author">— Ana Costa, Belo Horizonte</p>
+        <div class="testimonial-label">ANTES & DEPOIS</div>
+        <div class="before-after-image">
+          <span style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.9); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; color: #666;">ANTES</span>
+          <span style="position: absolute; bottom: 10px; right: 10px; background: rgba(255,255,255,0.9); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; color: #666;">DEPOIS</span>
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.9rem; color: #999;">Imagem depoimento 3</div>
+        </div>
+        <p class="testimonial-author">Ana Costa - Belo Horizonte</p>
       </div>
     </div>
   </div>
