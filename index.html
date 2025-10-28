@@ -287,9 +287,72 @@
     height: 400px !important;
   }
 }
+
+/* Countdown Timer Styles */
+.countdown-timer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #f47f2b 0%, #e56600 100%);
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  z-index: 9999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.countdown-timer h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.countdown-timer .timer {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+
+.countdown-timer .timer span {
+  background: rgba(255,255,255,0.2);
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 0 3px;
+}
+
+/* CTA Section Styles */
+.cta-section {
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #1d1d1d;
+  margin-bottom: 15px;
+}
+
+.cta-section p {
+  font-size: 1.3rem;
+  color: #f47f2b;
+  font-weight: 700;
+  margin-bottom: 0;
+}
 </style>
 </head>
 <body>
+
+<!-- Countdown Timer -->
+<div class="countdown-timer">
+  <h3>⏰ PROMOÇÃO TERMINA EM:</h3>
+  <div class="timer" id="countdown">
+    <span id="minutes">10</span>:<span id="seconds">00</span>
+  </div>
+</div>
 
 <!-- Header Section -->
 <section class="header-section">
@@ -364,6 +427,14 @@
         <span class="visually-hidden">Próximo</span>
       </button>
     </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Escolha Seu Pacote Agora!</h2>
+    <p>🌟 Aproveite a promoção enquanto dura!</p>
   </div>
 </section>
 
@@ -693,6 +764,30 @@ var ekit_config = {"ajaxurl":"https:\/\/institutonewmoney.com\/wp-admin\/admin-a
 if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
 images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
 if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script>
+<script>
+// Countdown Timer - 10 minutes
+(function() {
+  let totalSeconds = 600; // 10 minutes
+  
+  function updateTimer() {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    
+    if (totalSeconds > 0) {
+      totalSeconds--;
+    } else {
+      // Reset to 10 minutes when reaches 0
+      totalSeconds = 600;
+    }
+  }
+  
+  updateTimer(); // Initial call
+  setInterval(updateTimer, 1000); // Update every second
+})();
+</script>
 </body>
 </html>
 
