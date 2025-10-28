@@ -269,182 +269,12 @@
   margin-bottom: 0;
 }
 
-/* Social Proof Styles */
-.social-proof {
-  background: #f8f9fa;
-  padding: 50px 20px;
-}
-
-.social-proof h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 900;
-  margin-bottom: 40px;
-  color: #1d1d1d;
-}
-
-.testimonials {
-  display: flex;
-  justify-content: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.testimonial-card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  overflow: hidden;
-  display: flex;
-  width: 100%;
-  max-width: 800px;
-}
-
-.testimonial-label {
-  font-weight: 700;
-  color: #f47f2b;
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-}
-
-.before-after-image {
-  width: 50%;
-  min-height: 400px;
-  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #999;
-  font-size: 1.1rem;
-  border: none;
-  position: relative;
-  overflow: hidden;
-}
-
-.testimonial-content {
-  width: 50%;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.testimonial-text-section {
-  margin-bottom: 20px;
-}
-
-.testimonial-text-section h3 {
-  color: #f47f2b;
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  font-weight: 900;
-}
-
-.testimonial-text-section p {
-  color: #333;
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin-bottom: 10px;
-}
-
-.before-after-image::before {
-  content: '📷';
-  font-size: 3rem;
-  opacity: 0.3;
-}
-
-.testimonial-author {
-  font-weight: 700;
-  color: #333;
-  font-size: 0.9rem;
-}
-
 @media (max-width: 768px) {
   .header-section h1 {
     font-size: 2rem;
   }
   .header-section p {
     font-size: 1.2rem;
-  }
-  .social-proof h2 {
-    font-size: 1.8rem;
-  }
-  .testimonial-card {
-    flex-direction: column;
-    max-width: 100%;
-  }
-  .before-after-image,
-  .testimonial-content {
-    width: 100%;
-  }
-  .before-after-image {
-    min-height: 300px;
-  }
-  .testimonial-content {
-    padding: 20px;
-  }
-}
-
-/* Gallery Section Styles */
-.gallery-section {
-  background: white;
-  padding: 50px 20px;
-}
-
-.gallery-section h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 900;
-  margin-bottom: 40px;
-  color: #1d1d1d;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.gallery-item {
-  background: #f8f9fa;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.gallery-item:hover {
-  transform: translateY(-5px);
-}
-
-.gallery-placeholder {
-  width: 100%;
-  height: 400px;
-  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #999;
-  font-size: 1.1rem;
-  border: 2px dashed #ccc;
-  position: relative;
-}
-
-.gallery-placeholder::before {
-  content: '📷';
-  font-size: 3rem;
-  opacity: 0.3;
-}
-
-@media (max-width: 768px) {
-  .gallery-section h2 {
-    font-size: 1.8rem;
-  }
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
 }
 </style>
 </head>
@@ -455,29 +285,6 @@
   <div class="container">
     <h1>🔥 Transforme Seu Corpo com BurnPeak!</h1>
     <p>A Fórmula #1 para Perda de Peso Rápida e Eficaz</p>
-  </div>
-</section>
-
-<!-- Social Proof Section -->
-<section class="social-proof">
-  <div class="container">
-    <h2>⭐ Resultados Reais dos Nossos Clientes</h2>
-    <div class="testimonials">
-      <div class="testimonial-card">
-        <div class="before-after-image" style="position: relative;">
-          <img src="https://i.imgur.com/wA0Xnnm.png" alt="Antes e Depois" style="width: 100%; height: 400px; object-fit: cover; border-radius: 10px;">
-          <span style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.9); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; color: #666; font-weight: 700;">ANTES</span>
-          <span style="position: absolute; bottom: 10px; right: 10px; background: rgba(255,255,255,0.9); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; color: #666; font-weight: 700;">DEPOIS</span>
-        </div>
-        <div class="testimonial-content">
-          <div class="testimonial-text-section">
-            <h3>Transformação Incrível!</h3>
-            <p>"Perdi 15kg em apenas 3 meses com BurnPeak! Minha energia aumentou drasticamente e me sinto mais confiante que nunca!"</p>
-            <p>— Maria Silva, São Paulo</p>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -706,33 +513,6 @@
       </div>
       <!-- END 2 Bottles -->
 
-    </div>
-  </div>
-</section>
-
-<!-- Gallery Section -->
-<section class="gallery-section">
-  <div class="container">
-    <h2>⭐ Mais Resultados Incríveis</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="https://i.imgur.com/M5AsibI.png" alt="Resultado 1" style="width: 100%; height: 400px; object-fit: cover;">
-      </div>
-      <div class="gallery-item">
-        <img src="https://i.imgur.com/6mn9ymD.png" alt="Resultado 2" style="width: 100%; height: 400px; object-fit: cover;">
-      </div>
-      <div class="gallery-item">
-        <img src="https://i.imgur.com/4Jvpsms.png" alt="Resultado 3" style="width: 100%; height: 400px; object-fit: cover;">
-      </div>
-      <div class="gallery-item">
-        <img src="https://i.imgur.com/wA0Xnnm.png" alt="Resultado 4" style="width: 100%; height: 400px; object-fit: cover;">
-      </div>
-      <div class="gallery-item">
-        <img src="https://i.imgur.com/M5AsibI.png" alt="Resultado 5" style="width: 100%; height: 400px; object-fit: cover;">
-      </div>
-      <div class="gallery-item">
-        <img src="https://i.imgur.com/6mn9ymD.png" alt="Resultado 6" style="width: 100%; height: 400px; object-fit: cover;">
-      </div>
     </div>
   </div>
 </section>
