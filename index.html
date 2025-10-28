@@ -19,6 +19,7 @@
 	
 	<!-- This site is optimized with the Yoast SEO plugin v25.8 - https://yoast.com/wordpress/plugins/seo/ -->
 	<title>burnpeak</title>
+<link crossorigin data-rocket-preconnect href="https://connect.facebook.net" rel="preconnect">
 <link crossorigin data-rocket-preconnect href="https://fonts.googleapis.com" rel="preconnect">
 <link data-rocket-preload as="style" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;900&#038;display=swap" rel="preload">
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;900&#038;display=swap" media="print" onload="this.media=&#039;all&#039;" rel="stylesheet">
@@ -246,9 +247,122 @@
 
 /* clean up if Elementor adds its own background-image */
 #products .button-bg::after{display:none}
+
+/* Header Styles */
+.header-section {
+  background: linear-gradient(135deg, #f47f2b 0%, #e56600 100%);
+  padding: 40px 20px;
+  text-align: center;
+  color: white;
+}
+
+.header-section h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.header-section p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+/* Social Proof Styles */
+.social-proof {
+  background: #f8f9fa;
+  padding: 50px 20px;
+}
+
+.social-proof h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 40px;
+  color: #1d1d1d;
+}
+
+.testimonials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.testimonial-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  max-width: 350px;
+  flex: 1 1 300px;
+}
+
+.testimonial-stars {
+  color: #ffb017;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.testimonial-text {
+  font-style: italic;
+  margin-bottom: 20px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.testimonial-author {
+  font-weight: 700;
+  color: #f47f2b;
+}
+
+@media (max-width: 768px) {
+  .header-section h1 {
+    font-size: 2rem;
+  }
+  .header-section p {
+    font-size: 1.2rem;
+  }
+  .social-proof h2 {
+    font-size: 1.8rem;
+  }
+}
 </style>
 </head>
 <body>
+
+<!-- Header Section -->
+<section class="header-section">
+  <div class="container">
+    <h1>🔥 Transforme Seu Corpo com BurnPeak!</h1>
+    <p>A Fórmula #1 para Perda de Peso Rápida e Eficaz</p>
+  </div>
+</section>
+
+<!-- Social Proof Section -->
+<section class="social-proof">
+  <div class="container">
+    <h2>⭐ O que Nossos Clientes Dizem</h2>
+    <div class="testimonials">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Perdi 12kg em apenas 3 meses com BurnPeak! Minha energia aumentou drasticamente e me sinto incrível!"</p>
+        <p class="testimonial-author">— Maria Silva, São Paulo</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Incrível como funciona rápido! Primeira semana e já vi resultados. Recomendo para todos!"</p>
+        <p class="testimonial-author">— João Santos, Rio de Janeiro</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Melhor investimento que fiz! Não precisei fazer dietas malucas, o BurnPeak fez toda a diferença."</p>
+        <p class="testimonial-author">— Ana Costa, Belo Horizonte</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="products" class="py-4 py-md-5">
   <div class="container">
