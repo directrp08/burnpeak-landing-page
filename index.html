@@ -846,6 +846,94 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .button-bg::after{display:non
         font-size: 12px;
     }
 }
+
+/* Countdown Pill Styles */
+.countdown-pill {
+    background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+    border-radius: 50px;
+    padding: 12px 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.pill-icon {
+    font-size: 20px;
+}
+
+.pill-label {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.pill-timer {
+    font-size: 24px;
+    font-family: 'Courier New', monospace;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 12px;
+    border-radius: 8px;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    color: #1E5BA8;
+}
+
+.cta-section p {
+    font-size: 1.25rem;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .countdown-pill {
+        padding: 10px 20px;
+        gap: 8px;
+    }
+    
+    .pill-icon {
+        font-size: 18px;
+    }
+    
+    .pill-label {
+        font-size: 12px;
+    }
+    
+    .pill-timer {
+        font-size: 20px;
+        padding: 5px 10px;
+    }
+    
+    .cta-section h2 {
+        font-size: 2rem;
+    }
+    
+    .cta-section p {
+        font-size: 1rem;
+    }
+}
 </style>
 </head>
 <body>
@@ -939,6 +1027,15 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .button-bg::after{display:non
 <!-- CTA Section -->
 <section class="cta-section">
   <div class="container">
+    <!-- Countdown Pill -->
+    <div class="countdown-pill">
+      <span class="pill-icon">⏰</span>
+      <span class="pill-label">OFFER ENDS IN:</span>
+      <span class="pill-timer">
+        <span id="pill-minutes">10</span>:<span id="pill-seconds">00</span>
+      </span>
+    </div>
+    
     <h2>Choose Your Package Now!</h2>
     <p>🌟 Take Advantage of This Limited Time Offer!</p>
   </div>
@@ -1742,6 +1839,35 @@ if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_c
             }
         );
     }
+})();
+</script>
+
+<!-- Countdown Pill Timer -->
+<script>
+(function() {
+    const minutesEl = document.getElementById('pill-minutes');
+    const secondsEl = document.getElementById('pill-seconds');
+    
+    if (!minutesEl || !secondsEl) return;
+    
+    let totalSeconds = 10 * 60; // 10 minutes in seconds
+    
+    function updateTimer() {
+        if (totalSeconds < 0) {
+            totalSeconds = 10 * 60; // Reset to 10 minutes
+        }
+        
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        
+        minutesEl.textContent = String(minutes).padStart(2, '0');
+        secondsEl.textContent = String(seconds).padStart(2, '0');
+        
+        totalSeconds--;
+    }
+    
+    updateTimer(); // Initial call
+    setInterval(updateTimer, 1000); // Update every second
 })();
 </script>
 </body>
