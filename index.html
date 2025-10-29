@@ -1167,6 +1167,58 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
     .hero-subtitle { font-size: 12px !important; }
   }
 
+  /* ================================================
+     IFRAME SEM BORDAS NO MOBILE
+     ID: 6901e392b6b436ae570c76dd
+     ================================================ */
+  /* MOBILE - SEM BORDAS */
+  @media (max-width: 768px) {
+    #ifr_6901e392b6b436ae570c76dd_wrapper {
+      margin: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+      border-radius: 12px !important;
+      overflow: hidden !important;
+    }
+    #ifr_6901e392b6b436ae570c76dd_aspect {
+      position: relative !important;
+      width: 100% !important;
+      padding: 178.57142857142858% 0 0 0 !important;
+      height: 0 !important;
+      margin: 0 !important;
+      border-radius: 12px !important;
+      overflow: hidden !important;
+    }
+    #ifr_6901e392b6b436ae570c76dd {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      border: none !important;
+      display: block !important;
+      border-radius: 12px !important;
+    }
+  }
+  /* DESKTOP - CENTRALIZADO 400PX */
+  @media (min-width: 769px) {
+    #ifr_6901e392b6b436ae570c76dd_wrapper {
+      margin: 0 auto !important;
+      width: 100% !important;
+      max-width: 400px !important;
+      border-radius: 16px !important;
+      overflow: hidden !important;
+    }
+    #ifr_6901e392b6b436ae570c76dd_aspect {
+      border-radius: 16px !important;
+      overflow: hidden !important;
+    }
+    #ifr_6901e392b6b436ae570c76dd {
+      border-radius: 16px !important;
+    }
+  }
+
   /* === REDUÇÃO DE ESPAÇAMENTO MOBILE === */
   @media (max-width: 768px) {
     /* Hero mais compacto */
@@ -1216,6 +1268,67 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
     padding: 6px 12px;
     border-radius: 8px;
 }
+
+  /* ================================================================
+     CORREÇÃO IFRAME ESPECÍFICO - ID: 6901e392b6b436ae570c76dd
+     MOBILE: Sem bordas (100% largura)
+     DESKTOP: Centralizado (400px max-width)
+     ================================================================ */
+  @media (max-width: 768px) {
+    /* Wrapper do iframe - ocupar 100% da largura */
+    #ifr_6901e392b6b436ae570c76dd_wrapper {
+      margin: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+    }
+    /* Aspect ratio container */
+    #ifr_6901e392b6b436ae570c76dd_aspect {
+      position: relative !important;
+      width: 100% !important;
+      padding: 178.57142857142858% 0 0 0 !important;
+      height: 0 !important;
+      margin: 0 !important;
+    }
+    /* Iframe */
+    #ifr_6901e392b6b436ae570c76dd {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      border: none !important;
+      display: block !important;
+    }
+  }
+  @media (min-width: 769px) {
+    /* Wrapper do iframe - centralizado com max-width 400px */
+    #ifr_6901e392b6b436ae570c76dd_wrapper {
+      margin: 0 auto !important;
+      width: 100% !important;
+      max-width: 400px !important;
+    }
+    /* Aspect ratio container */
+    #ifr_6901e392b6b436ae570c76dd_aspect {
+      position: relative !important;
+      width: 100% !important;
+      padding: 178.57142857142858% 0 0 0 !important;
+      height: 0 !important;
+    }
+    /* Iframe */
+    #ifr_6901e392b6b436ae570c76dd {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      border: none !important;
+    }
+  }
+  /* Garantir que não tenha overflow */
+  #ifr_6901e392b6b436ae570c76dd_wrapper,
+  #ifr_6901e392b6b436ae570c76dd_aspect,
+  #ifr_6901e392b6b436ae570c76dd { box-sizing: border-box !important; }
 
 .cta-section {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -1865,6 +1978,15 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
     </div>
 
     
+  </div>
+</section>
+
+<!-- Inline portrait iframe above CTA -->
+<section style="background: transparent; padding: 0; margin: 0;">
+  <div id="ifr_6901e392b6b436ae570c76dd_wrapper" style="margin: 0 auto; width: 100%; max-width: 400px;">
+    <div id="ifr_6901e392b6b436ae570c76dd_aspect" style="position: relative; padding: 178.57142857142858% 0 0 0;">
+      <iframe id="ifr_6901e392b6b436ae570c76dd" frameborder="0" allowfullscreen src="about:blank" referrerpolicy="origin" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" onload=" this.onload=null, this.src='https://scripts.converteai.net/9afd1484-cb7c-43b2-aa60-a616e8109945/players/6901e392b6b436ae570c76dd/v4/embed.html' +(location.search||'?') +'&vl=' +encodeURIComponent(location.href)"></iframe>
+    </div>
   </div>
 </section>
 
