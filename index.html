@@ -248,7 +248,8 @@ input, select, textarea,
 }
 
 /* Fix distorted images in Elementor */
-#products .item img{
+#products .item img,
+#products-section-2 .item img{
   width:auto !important;
   height:auto !important;
   max-width:100%;
@@ -258,7 +259,7 @@ input, select, textarea,
   margin:0 auto;
 }
 @media (max-width: 767.98px){
-  #products .item img{max-height:200px}
+  #products .item img, #products-section-2 .item img{max-height:200px}
 }
 
 /* Price/text colors */
@@ -424,6 +425,26 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
   #testimonialsCarousel .carousel-item > div {
     height: 400px !important;
   }
+}
+
+  /* Mobile product card header text color */
+  .item-header{ color:#ffffff; }
+  /* remove SVG helper (reverted) */
+
+/* Arrived Social Proof Carousel */
+#arrivedCarousel {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+#arrivedCarousel .carousel-item > div { height: auto; position: relative; padding: 10px 10px 0; }
+#arrivedCarousel img { width: 100%; height: 360px; object-fit: contain; display: block; background:#fff; border-radius:12px; }
+.arrived-caption { color:#333; padding:10px 4px 16px; font-size:14px; line-height:1.4; text-align:center; }
+@media (max-width: 768px) {
+  #arrivedCarousel img { height: 260px; }
 }
 
 /* Countdown Timer Styles */
@@ -1674,8 +1695,28 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+    <!-- CTA below carousel -->
+    <div class="text-center" style="margin-top:20px;">
+      <a href="#products-section-2" id="ctaScrollToSix" class="btn btn-lg" style="background:#ff6b35;color:#fff;border-radius:999px;padding:14px 28px;font-weight:800;box-shadow:0 8px 18px rgba(255,107,53,.35);text-transform:uppercase;letter-spacing:.5px;">I WANT TO START LOSING WEIGHT!</a>
+    </div>
   </div>
 </section>
+
+<script>
+  (function(){
+    var link = document.getElementById('ctaScrollToSix');
+    if (!link) return;
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.getElementById('products-section-2');
+      if (target && target.scrollIntoView) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (target) {
+        window.location.hash = '#products-section-2';
+      }
+    });
+  })();
+  </script>
 
 <script>
   (function(){
@@ -1767,7 +1808,7 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
 
       <!-- 3 + 3 Bottles (middle, orange) -->
       <div class="col-12 col-md-4 mb-3 order-1 order-md-2">
-        <a href="https://burnpeak.mycartpanda.com/checkout/184978346:1?afid=1i2OMo0Rlu" title="6 Bottles"
+          <a id="six-bottles-cta-target" href="https://burnpeak.mycartpanda.com/checkout/184978346:1?afid=1i2OMo0Rlu" title="6 Bottles"
            class="d-block rounded-5 shadow item promo buylink kit3"
            style="text-decoration:none; padding:6px; color:var(--text-color); background-color:var(--primary-color);">
           <!-- desktop -->
@@ -1880,7 +1921,9 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
             </div>
           </div>
           <!-- mobile -->
-          <div class="d-md-none text-center rounded-5 pt-2 overflow-hidden" style="background-color:#fbfbfb;">
+          <div class="d-md-none text-center rounded-5 overflow-hidden" style="background-color:var(--light-color);">
+            <div class="pt-1 fw-bold item-header" style="background-color:#ffc72c; font-size:.9em;">GOOD VALUE</div>
+            <div class="w-100 mobile-triangle" style="clip-path:polygon(100% 0, 0 0, 50% 100%); margin:-1px auto 0; background-color:#ffc72c; height:14px;"></div>
             <div class="container">
               <div class="row align-items-center">
                 <div class="col-6 p-1">
@@ -1911,6 +1954,7 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
             <div class="p-2">
               <div class="btn rounded-3 button-bg fs-4 w-100" style="max-width:250px;">BUY NOW<span class="d-block" style="font-size:.6em;">Good Offer</span></div>
             </div>
+            <div class="w-100 mobile-triangle bottom" style="clip-path:polygon(100% 0, 0 0, 50% 100%); rotate:180deg; margin:.5rem auto 0; background:#ffc72c; height:14px;"></div>
           </div>
         </a>
       </div>
@@ -1950,7 +1994,9 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
             </div>
           </div>
           <!-- mobile -->
-          <div class="d-md-none text-center rounded-5 pt-2 overflow-hidden" style="background-color:#fbfbfb;">
+          <div class="d-md-none text-center rounded-5 overflow-hidden" style="background-color:var(--light-color);">
+            <div class="pt-1 fw-bold item-header" style="background-color:#ffc72c; font-size:.9em;">TRY TWO</div>
+            <div class="w-100 mobile-triangle" style="clip-path:polygon(100% 0, 0 0, 50% 100%); margin:-1px auto 0; background-color:#ffc72c; height:14px;"></div>
             <div class="container">
               <div class="row align-items-center">
                 <div class="col-6 p-1">
@@ -1981,6 +2027,7 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
             <div class="p-2">
               <div class="btn rounded-3 button-bg fs-4 w-100" style="max-width:250px;">BUY NOW<span class="d-block" style="font-size:.6em;">Basic Offer</span></div>
             </div>
+            <div class="w-100 mobile-triangle bottom" style="clip-path:polygon(100% 0, 0 0, 50% 100%); rotate:180deg; margin:.5rem auto 0; background:#ffc72c; height:14px;"></div>
           </div>
         </a>
       </div>
@@ -2272,7 +2319,7 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
 </section>
 
 <!-- Products Section 2 (Duplicate) -->
-<section class="py-4 py-md-5" style="background: #f8f9fa;">
+<section id="products-section-2" class="py-4 py-md-5" style="background: #f8f9fa;">
   <div class="container">
     <div class="row align-items-center">
 
@@ -2497,6 +2544,55 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
       </div>
       <!-- END 2 Bottles -->
 
+    </div>
+  </div>
+<!-- Social Proof: Deliveries Arrived Carousel (moved above guarantee) -->
+<section style="background:#f8f9fa; padding:40px 20px;">
+  <div class="container">
+    <h2 style="text-align:center; font-weight:900; margin-bottom:14px; color:#1a1a1a;">You ordered... <span style="color: var(--primary-color);">IT ARRIVED!</span></h2>
+    <p style="text-align:center; color:#666; margin-bottom:20px;">Real photos from customers receiving their BurnPeak orders.</p>
+
+    <div id="arrivedCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#arrivedCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#arrivedCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#arrivedCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#arrivedCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div>
+            <img src="logo/Gemini_Generated_Image_yevin0yevin0yevi.png" alt="Talita with her delivery">
+            <div class="arrived-caption"><strong>Talita, 33 —</strong> I bought 3 bottles and I'm getting more. Super happy with my results!</div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div>
+            <img src="logo/Gemini_Generated_Image_y9804ay9804ay980.png" alt="Carol with her delivery">
+            <div class="arrived-caption"><strong>Carol, 30 —</strong> Even living far away, my BurnPeak arrived perfectly. Thank you!</div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div>
+            <img src="logo/Gemini_Generated_Image_cm4bzscm4bzscm4b.png" alt="Thayna with her delivery">
+            <div class="arrived-caption"><strong>Thayna, 27 —</strong> Delivery was faster than I expected — 6 days and it was at my door!</div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div>
+            <img src="logo/Gemini_Generated_Image_ak57a7ak57a7ak57.png" alt="Fatima with her delivery">
+            <div class="arrived-caption"><strong>Fatima, 59 —</strong> Even after menopause I'm seeing great results in little time. So happy!</div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#arrivedCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#arrivedCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
   </div>
 </section>
