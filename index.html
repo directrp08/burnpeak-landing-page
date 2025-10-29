@@ -453,6 +453,93 @@
     gap: 15px;
   }
 }
+
+/* Guarantee Section */
+.guarantee-section {
+  background: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.guarantee-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.guarantee-badge {
+  max-width: 200px;
+  margin: 0 auto 40px;
+}
+
+.guarantee-badge img {
+  width: 100%;
+  height: auto;
+}
+
+.guarantee-text {
+  max-width: 900px;
+  margin: 0 auto 50px;
+}
+
+.guarantee-text h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #1d1d1d;
+  margin-bottom: 20px;
+}
+
+.guarantee-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+  text-align: left;
+}
+
+.badges-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.badge-item {
+  width: 150px;
+  transition: transform 0.3s ease;
+}
+
+.badge-item:hover {
+  transform: scale(1.1);
+}
+
+.badge-item img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .guarantee-section {
+    padding: 50px 15px;
+  }
+  .guarantee-badge {
+    max-width: 150px;
+    margin-bottom: 30px;
+  }
+  .guarantee-text h2 {
+    font-size: 1.8rem;
+  }
+  .guarantee-text p {
+    font-size: 1rem;
+    text-align: justify;
+  }
+  .badges-grid {
+    gap: 20px;
+  }
+  .badge-item {
+    width: 120px;
+  }
+}
 </style>
 </head>
 <body>
@@ -826,6 +913,39 @@
         <div class="gallery-image"><img src="images2/92f4025a6a2dc2233cdbc9c5fe2ccc57.jpg" alt="Result 6"></div>
         <div class="gallery-image"><img src="images2/9de60a5450cbce62d143353a27abaff9.jpg" alt="Result 7"></div>
         <div class="gallery-image"><img src="images2/ad09e38d4bb6032a39a08a0f61ceadc9.jpg" alt="Result 8"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Guarantee Section -->
+<section class="guarantee-section">
+  <div class="guarantee-content">
+    <!-- Main Guarantee Badge -->
+    <div class="guarantee-badge">
+      <img src="stamps/guarantee-badge.webp" alt="60-Day Money Back Guarantee">
+    </div>
+    
+    <!-- Guarantee Text -->
+    <div class="guarantee-text">
+      <h2>100% Satisfaction or Your Money Back</h2>
+      <h3 style="color: #f47f2b; margin-bottom: 20px; font-size: 2rem;">60-day Guarantee</h3>
+      <p>We're so confident you'll achieve incredible results that we back BurnPeak with a 100% satisfaction guarantee for 60 days. Start using it as soon as it arrives, and within days, you may notice improved digestion, a clearer mind, and reduced bloating. As you continue your journey, you could start to see gradual improvements in gut health and a more balanced digestive system, making it the perfect time to track your progress. If after several weeks or even months you're not completely satisfied, we'll refund your money in full. With BurnPeak, you're truly in control of your gut health journey.</p>
+    </div>
+    
+    <!-- Additional Badges -->
+    <div class="badges-grid">
+      <div class="badge-item">
+        <img src="stamps/gmp.png" alt="GMP Certified">
+      </div>
+      <div class="badge-item">
+        <img src="stamps/nat.png" alt="Natural">
+      </div>
+      <div class="badge-item">
+        <img src="stamps/gmo.png" alt="Non-GMO">
+      </div>
+      <div class="badge-item">
+        <img src="stamps/foreign.png" alt="Premium Quality">
       </div>
     </div>
   </div>
