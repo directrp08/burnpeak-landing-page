@@ -365,7 +365,8 @@
 /* Results Gallery Section */
 .results-gallery {
   background: #f8f9fa;
-  padding: 60px 20px;
+  padding: 60px 0;
+  overflow: hidden;
 }
 
 .results-gallery h2 {
@@ -374,14 +375,43 @@
   font-weight: 900;
   margin-bottom: 40px;
   color: #1d1d1d;
+  padding: 0 20px;
 }
 
-.gallery-wrapper {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+.gallery-scroll {
+  display: flex;
   gap: 20px;
-  max-width: 1400px;
-  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 20px;
+  animation: scroll-left 30s linear infinite;
+}
+
+.gallery-track-2 {
+  display: flex;
+  gap: 20px;
+  animation: scroll-right 30s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .gallery-image {
@@ -389,8 +419,9 @@
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
 }
 
 .gallery-image:hover {
@@ -404,21 +435,22 @@
   display: block;
 }
 
-@media (max-width: 992px) {
-  .gallery-wrapper {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-  }
-}
-
 @media (max-width: 768px) {
   .results-gallery h2 {
     font-size: 1.8rem;
     margin-bottom: 30px;
   }
-  .gallery-wrapper {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+  .gallery-image {
+    width: 150px;
+    height: 150px;
+  }
+  .gallery-scroll {
+    gap: 15px;
+    padding: 0 15px;
+  }
+  .gallery-track,
+  .gallery-track-2 {
+    gap: 15px;
   }
 }
 </style>
@@ -750,30 +782,50 @@
 <section class="results-gallery">
   <div class="container">
     <h2>⭐ Real Results from Our Customers</h2>
-    <div class="gallery-wrapper">
-      <div class="gallery-image">
-        <img src="images2/0492aaf3695c37077e4d2fa1126eee33.jpg" alt="Customer Result 1">
+    
+    <!-- First row scrolling left -->
+    <div class="gallery-scroll">
+      <div class="gallery-track">
+        <div class="gallery-image"><img src="images2/0492aaf3695c37077e4d2fa1126eee33.jpg" alt="Result 1"></div>
+        <div class="gallery-image"><img src="images2/3477bae9564215d51c6b328b965d6809.jpg" alt="Result 2"></div>
+        <div class="gallery-image"><img src="images2/3c9696f5d73417736cb50275ddf2d2f0.jpg" alt="Result 3"></div>
+        <div class="gallery-image"><img src="images2/6b092d6ff44ee4400c937204552360ad.jpg" alt="Result 4"></div>
+        <div class="gallery-image"><img src="images2/8971719b77fc50d857cef08ad306df69.jpg" alt="Result 5"></div>
+        <div class="gallery-image"><img src="images2/92f4025a6a2dc2233cdbc9c5fe2ccc57.jpg" alt="Result 6"></div>
+        <div class="gallery-image"><img src="images2/9de60a5450cbce62d143353a27abaff9.jpg" alt="Result 7"></div>
+        <div class="gallery-image"><img src="images2/ad09e38d4bb6032a39a08a0f61ceadc9.jpg" alt="Result 8"></div>
+        <!-- Duplicate for infinite scroll -->
+        <div class="gallery-image"><img src="images2/0492aaf3695c37077e4d2fa1126eee33.jpg" alt="Result 1"></div>
+        <div class="gallery-image"><img src="images2/3477bae9564215d51c6b328b965d6809.jpg" alt="Result 2"></div>
+        <div class="gallery-image"><img src="images2/3c9696f5d73417736cb50275ddf2d2f0.jpg" alt="Result 3"></div>
+        <div class="gallery-image"><img src="images2/6b092d6ff44ee4400c937204552360ad.jpg" alt="Result 4"></div>
+        <div class="gallery-image"><img src="images2/8971719b77fc50d857cef08ad306df69.jpg" alt="Result 5"></div>
+        <div class="gallery-image"><img src="images2/92f4025a6a2dc2233cdbc9c5fe2ccc57.jpg" alt="Result 6"></div>
+        <div class="gallery-image"><img src="images2/9de60a5450cbce62d143353a27abaff9.jpg" alt="Result 7"></div>
+        <div class="gallery-image"><img src="images2/ad09e38d4bb6032a39a08a0f61ceadc9.jpg" alt="Result 8"></div>
       </div>
-      <div class="gallery-image">
-        <img src="images2/3477bae9564215d51c6b328b965d6809.jpg" alt="Customer Result 2">
-      </div>
-      <div class="gallery-image">
-        <img src="images2/3c9696f5d73417736cb50275ddf2d2f0.jpg" alt="Customer Result 3">
-      </div>
-      <div class="gallery-image">
-        <img src="images2/6b092d6ff44ee4400c937204552360ad.jpg" alt="Customer Result 4">
-      </div>
-      <div class="gallery-image">
-        <img src="images2/8971719b77fc50d857cef08ad306df69.jpg" alt="Customer Result 5">
-      </div>
-      <div class="gallery-image">
-        <img src="images2/92f4025a6a2dc2233cdbc9c5fe2ccc57.jpg" alt="Customer Result 6">
-      </div>
-      <div class="gallery-image">
-        <img src="images2/9de60a5450cbce62d143353a27abaff9.jpg" alt="Customer Result 7">
-      </div>
-      <div class="gallery-image">
-        <img src="images2/ad09e38d4bb6032a39a08a0f61ceadc9.jpg" alt="Customer Result 8">
+    </div>
+    
+    <!-- Second row scrolling right -->
+    <div class="gallery-scroll" style="margin-top: 20px;">
+      <div class="gallery-track-2">
+        <div class="gallery-image"><img src="images2/0492aaf3695c37077e4d2fa1126eee33.jpg" alt="Result 1"></div>
+        <div class="gallery-image"><img src="images2/3477bae9564215d51c6b328b965d6809.jpg" alt="Result 2"></div>
+        <div class="gallery-image"><img src="images2/3c9696f5d73417736cb50275ddf2d2f0.jpg" alt="Result 3"></div>
+        <div class="gallery-image"><img src="images2/6b092d6ff44ee4400c937204552360ad.jpg" alt="Result 4"></div>
+        <div class="gallery-image"><img src="images2/8971719b77fc50d857cef08ad306df69.jpg" alt="Result 5"></div>
+        <div class="gallery-image"><img src="images2/92f4025a6a2dc2233cdbc9c5fe2ccc57.jpg" alt="Result 6"></div>
+        <div class="gallery-image"><img src="images2/9de60a5450cbce62d143353a27abaff9.jpg" alt="Result 7"></div>
+        <div class="gallery-image"><img src="images2/ad09e38d4bb6032a39a08a0f61ceadc9.jpg" alt="Result 8"></div>
+        <!-- Duplicate for infinite scroll -->
+        <div class="gallery-image"><img src="images2/0492aaf3695c37077e4d2fa1126eee33.jpg" alt="Result 1"></div>
+        <div class="gallery-image"><img src="images2/3477bae9564215d51c6b328b965d6809.jpg" alt="Result 2"></div>
+        <div class="gallery-image"><img src="images2/3c9696f5d73417736cb50275ddf2d2f0.jpg" alt="Result 3"></div>
+        <div class="gallery-image"><img src="images2/6b092d6ff44ee4400c937204552360ad.jpg" alt="Result 4"></div>
+        <div class="gallery-image"><img src="images2/8971719b77fc50d857cef08ad306df69.jpg" alt="Result 5"></div>
+        <div class="gallery-image"><img src="images2/92f4025a6a2dc2233cdbc9c5fe2ccc57.jpg" alt="Result 6"></div>
+        <div class="gallery-image"><img src="images2/9de60a5450cbce62d143353a27abaff9.jpg" alt="Result 7"></div>
+        <div class="gallery-image"><img src="images2/ad09e38d4bb6032a39a08a0f61ceadc9.jpg" alt="Result 8"></div>
       </div>
     </div>
   </div>
