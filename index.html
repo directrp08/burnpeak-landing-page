@@ -855,6 +855,7 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .button-bg::after{display:non
     line-height: 1.2;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     animation: heroSlideIn 0.8s ease-out 0.2s both;
+    letter-spacing: -0.5px;
 }
 
 @keyframes heroSlideIn {
@@ -884,7 +885,7 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .button-bg::after{display:non
     }
 
     .hero-container {
-        padding: 0 15px;
+        padding: 0 10px;
     }
 
     .timer-label {
@@ -905,7 +906,10 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .button-bg::after{display:non
     }
 
     .hero-main-title {
-        font-size: 32px;
+        font-size: 24px;
+        line-height: 1.1;
+        margin-bottom: 2px;
+        letter-spacing: -0.3px;
     }
 
     .hero-subtitle {
@@ -914,6 +918,10 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .button-bg::after{display:non
 }
 
 @media (max-width: 480px) {
+    .hero-container {
+        padding: 0 8px;
+    }
+    
     .time-box {
         min-width: 60px;
         padding: 12px;
@@ -929,7 +937,10 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .button-bg::after{display:non
     }
 
     .hero-main-title {
-        font-size: 28px;
+        font-size: 20px;
+        line-height: 1.1;
+        margin-bottom: 2px;
+        letter-spacing: -0.2px;
     }
 
     .hero-subtitle {
