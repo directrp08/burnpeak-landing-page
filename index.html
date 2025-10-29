@@ -1718,6 +1718,96 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
   })();
   </script>
 
+  <script>
+  // Localize prices to GBP when visiting from United Kingdom
+  (function () {
+    function formatGBP(value) {
+      var fixed = (Math.round(value * 100) / 100).toFixed(2);
+      if (fixed.endsWith('.00')) fixed = fixed.slice(0, -3);
+      return { major: fixed };
+    }
+
+    function setPerBottlePrice(container, amount) {
+      if (!container) return;
+      var gbp = formatGBP(amount).major;
+      // Desktop price: <b><sup>$</sup>49</b>
+      // Mobile price: the same structure
+      container.innerHTML = '<sup class="fs-3 fs-5">£</sup>' + gbp;
+    }
+
+    function setTotal(container, totalGbp, shippingHtml) {
+      if (!container) return;
+      var gbp = formatGBP(totalGbp).major;
+      // Replace entire block to avoid leftover USD values
+      container.innerHTML = 'Total: <b>£' + gbp + '</b><br>' + shippingHtml;
+    }
+
+    function applyGBP(sectionRoot) {
+      if (!sectionRoot) return;
+      // kit3: 6 bottles → total £229, per bottle £229/6
+      var kit3 = sectionRoot.querySelector('.kit3');
+      if (kit3) {
+        // desktop per-bottle
+        setPerBottlePrice(kit3.querySelector('.d-none.d-md-block .price b'), 229/6);
+        // mobile per-bottle
+        setPerBottlePrice(kit3.querySelector('.d-md-none .price b'), 229/6);
+        // totals (both desktop and mobile)
+        setTotal(kit3.querySelector('.d-none.d-md-block .totals'), 229, '<b>+ <span>FREE</span> SHIPPING</b>');
+        setTotal(kit3.querySelector('.d-md-none .totals'), 229, '<b>+ <span>FREE</span> SHIPPING</b>');
+      }
+
+      // kit2: 3 bottles → total £159, per bottle £53
+      var kit2 = sectionRoot.querySelector('.kit2');
+      if (kit2) {
+        setPerBottlePrice(kit2.querySelector('.d-none.d-md-block .price b'), 159/3);
+        setPerBottlePrice(kit2.querySelector('.d-md-none .price b'), 159/3);
+        setTotal(kit2.querySelector('.d-none.d-md-block .totals'), 159, '<b>+ <span>FREE</span> SHIPPING</b>');
+        setTotal(kit2.querySelector('.d-md-none .totals'), 159, '<b>+ <span>FREE</span> SHIPPING</b>');
+      }
+
+      // kit1: 2 bottles → total £119, per bottle £59.5
+      var kit1 = sectionRoot.querySelector('.kit1');
+      if (kit1) {
+        setPerBottlePrice(kit1.querySelector('.d-none.d-md-block .price b'), 119/2);
+        setPerBottlePrice(kit1.querySelector('.d-md-none .price b'), 119/2);
+        setTotal(kit1.querySelector('.d-none.d-md-block .totals'), 119, '<b>+ £9.99 SHIPPING</b>');
+        setTotal(kit1.querySelector('.d-md-none .totals'), 119, '<b>+ £9.99 SHIPPING</b>');
+      }
+    }
+
+    function detectAndApplyGBP() {
+      try {
+        // Fast heuristic using Intl timezone/locales; will be overridden by ipapi if available
+        var locale = (navigator.language || '').toLowerCase();
+        var tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '').toLowerCase();
+        var likelyGB = locale.startsWith('en-gb') || tz.includes('london');
+
+        function doApply() {
+          applyGBP(document.querySelector('#products'));
+          applyGBP(document.querySelector('#products-section-2'));
+        }
+
+        // Prefer ipapi if network works
+        fetch('https://ipapi.co/json/')
+          .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
+          .then(function(data){ if (data && data.country_code === 'GB') doApply(); })
+          .catch(function(){ if (likelyGB) doApply(); });
+      } catch (e) {
+        // Last resort: apply on en-GB
+        if ((navigator.language||'').toLowerCase().startsWith('en-gb')) {
+          applyGBP(document.querySelector('#products'));
+          applyGBP(document.querySelector('#products-section-2'));
+        }
+      }
+    }
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      detectAndApplyGBP();
+    } else {
+      document.addEventListener('DOMContentLoaded', detectAndApplyGBP);
+    }
+  })();
+  </script>
 <script>
   (function(){
     var els = document.querySelectorAll('.reveal-on-scroll');
