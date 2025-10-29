@@ -1025,6 +1025,190 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
     letter-spacing: 1px;
 }
 
+  /* ===================================
+     CORREÇÕES CRÍTICAS DE RESPONSIVIDADE
+     =================================== */
+
+  /* Reset e overflow fix */
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+    position: relative !important;
+  }
+
+  * { box-sizing: border-box !important; }
+
+  /* Hero section responsivo */
+  .hero-countdown-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    position: relative !important;
+    min-height: 420px !important;
+  }
+
+  /* Vídeo background responsivo */
+  .hero-video-bg {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    z-index: 1 !important;
+  }
+
+  /* Wrapper do iframe */
+  #ifr_6901d73aa83e5df956e5b079_wrapper {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Aspect ratio do iframe */
+  #ifr_6901d73aa83e5df956e5b079_aspect {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Iframe responsivo */
+  #ifr_6901d73aa83e5df956e5b079 {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    border: none !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
+
+  /* Overlay do hero */
+  .hero-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+    background: rgba(255, 107, 53, 0.18) !important;
+  }
+
+  /* Container do hero */
+  .hero-container {
+    position: relative !important;
+    z-index: 3 !important;
+    max-width: 600px !important;
+    width: 100% !important;
+    padding: 0 20px !important;
+    text-align: center !important;
+  }
+
+  /* Títulos do hero */
+  .hero-main-title {
+    font-size: clamp(20px, 5vw, 48px) !important;
+    line-height: 1.1 !important;
+    margin-bottom: 10px !important;
+    color: #1E5BA8 !important;
+    font-weight: 900 !important;
+    -webkit-text-stroke: 2px #ffffff !important;
+    text-shadow: 0 0 2px rgba(255,255,255,0.9), 0 0 8px rgba(255,255,255,0.6) !important;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(14px, 3vw, 22px) !important;
+    color: white !important;
+    font-weight: 900 !important;
+    line-height: 1.2 !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.4) !important;
+  }
+
+  /* Containers gerais */
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  /* Elementor fix */
+  .elementor, .elementor-3776, .e-con, .e-con-inner {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* MOBILE ESPECÍFICO */
+  @media (max-width: 768px) {
+    .hero-countdown-section {
+      min-height: 360px !important;
+      padding: 10px 0 !important;
+    }
+
+    .hero-container { padding: 0 15px !important; }
+    .hero-main-title { font-size: 20px !important; margin-bottom: 8px !important; }
+    .hero-subtitle { font-size: 14px !important; }
+
+    /* Carousel mobile */
+    #testimonialsCarousel { max-width: 100% !important; }
+    #testimonialsCarousel .carousel-item > div { height: 400px !important; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-main-title { font-size: 18px !important; line-height: 1.1 !important; }
+    .hero-subtitle { font-size: 12px !important; }
+  }
+
+  /* === REDUÇÃO DE ESPAÇAMENTO MOBILE === */
+  @media (max-width: 768px) {
+    /* Hero mais compacto */
+    .hero-countdown-section {
+      min-height: 280px !important;
+      height: 280px !important;
+      padding: 5px 0 !important;
+      margin-bottom: 0 !important;
+    }
+    .hero-main-title { font-size: 18px !important; margin-bottom: 6px !important; line-height: 1.05 !important; }
+    .hero-subtitle { font-size: 13px !important; line-height: 1.15 !important; }
+    /* Seção Social Proof mais próxima */
+    section[style*="background: #f8f9fa"],
+    section[style*="padding: 50px 20px"] { padding-top: 20px !important; padding-bottom: 30px !important; margin-top: 0 !important; }
+    /* Texto "The Natural Revolution" */
+    .revolution-text { padding-top: 0 !important; padding-bottom: 20px !important; margin-top: 0 !important; font-size: 1.2rem !important; line-height: 1.3 !important; }
+    /* Carrossel */
+    #testimonialsCarousel { margin-top: 0 !important; }
+    /* Remover espaços extras */
+    .promo-banner, .logo-bar { margin-bottom: 0 !important; }
+    .logo-bar { padding: 6px 0 !important; }
+    /* Elementor */
+    .elementor-3776, .e-con { padding-top: 0 !important; margin-top: 0 !important; }
+  }
+  /* iPhones específicos (375px - 430px) */
+  @media (min-width: 375px) and (max-width: 430px) {
+    .hero-countdown-section { min-height: 260px !important; height: 260px !important; padding: 3px 0 !important; }
+    .hero-main-title { font-size: 17px !important; margin-bottom: 5px !important; }
+    .hero-subtitle { font-size: 12px !important; }
+    .revolution-text { padding-bottom: 15px !important; font-size: 1.1rem !important; }
+  }
+  /* iPhone Pro Max (14, 15) - 430px */
+  @media (min-width: 428px) and (max-width: 430px) {
+    .hero-countdown-section { min-height: 270px !important; height: 270px !important; }
+  }
+  /* iPhone mini (12, 13) - 375px */
+  @media (max-width: 375px) {
+    .hero-countdown-section { min-height: 240px !important; height: 240px !important; padding: 2px 0 !important; }
+    .hero-main-title { font-size: 16px !important; }
+    .hero-subtitle { font-size: 11px !important; }
+  }
+
 .pill-timer {
     font-size: 24px;
     font-family: 'Courier New', monospace;
@@ -1098,10 +1282,10 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
 <!-- Hero Countdown Section with background video -->
 <section class="hero-countdown-section">
     <div class="hero-video-bg">
-      <div id="ifr_6901d73aa83e5df956e5b079_wrapper" style="margin:0 auto; width:100%; height:100%; position:absolute; inset:0;">
-        <div id="ifr_6901d73aa83e5df956e5b079_aspect" style="position:relative; padding:75% 0 0 0; height:100%;">
-          <iframe id="ifr_6901d73aa83e5df956e5b079" frameborder="0" allowfullscreen src="about:blank" referrerpolicy="origin" 
-                  style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+      <div id="ifr_6901d73aa83e5df956e5b079_wrapper" style="margin:0 auto; width:100%; max-width:100%; position:absolute; inset:0; overflow:hidden;">
+        <div id="ifr_6901d73aa83e5df956e5b079_aspect" style="position:relative; width:100%; padding-bottom:56.25%; height:0; overflow:hidden;">
+          <iframe id="ifr_6901d73aa83e5df956e5b079" frameborder="0" allowfullscreen src="about:blank" referrerpolicy="origin"
+                  style="position:absolute; top:0; left:0; width:100% !important; height:100% !important; border:none; display:block;"></iframe>
         </div>
       </div>
     </div>
@@ -1133,9 +1317,9 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
 </script>
 
 <!-- Social Proof Section with Carousel -->
-<section style="background: #f8f9fa; padding: 50px 20px;">
-  <div class="container">
-    <div class="revolution-text">
+<section style="background: #f8f9fa; padding: 50px 20px; padding-top: 30px; margin-top: 0;">
+  <div class="container" style="margin-top: 0; padding-top: 0;">
+    <div class="revolution-text" style="margin-top: 0; padding-top: 0;">
       The Natural Revolution That Mimics and Surpasses the Results of Ozempic and Mounjaro - No Injections, No Risks.
     </div>
     <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" style="max-width: 800px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden;">
@@ -2143,10 +2327,6 @@ if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_c
 /* Hero background video and overlay */
 .hero-video-bg { position: absolute; inset: 0; overflow: hidden; z-index: 1; }
 .hero-video-bg vturb-smartplayer { position: absolute; inset: 0; width:100% !important; height:100% !important; display:block; }
-.hero-video-bg iframe, .hero-video-bg video {
-  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-  min-width:100%; min-height:100%; width:auto; height:auto; object-fit: cover;
-}
 .hero-video-bg > div { position:absolute; inset:0; }
 .hero-overlay { position: absolute; inset: 0; background: rgba(255, 107, 53, 0.18); z-index: 9999; pointer-events:none; }
 
