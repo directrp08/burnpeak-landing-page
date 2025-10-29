@@ -38,9 +38,10 @@
 	<meta name="twitter:data1" content="3 minutos" />
 	<!-- VTurb performance hints -->
 	<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-	<link rel="preload" href="https://scripts.converteai.net/9afd1484-cb7c-43b2-aa60-a616e8109945/players/6901ceed71c90509ab7609e7/v4/player.js" as="script">
-	<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-	<link rel="preload" href="https://cdn.converteai.net/9afd1484-cb7c-43b2-aa60-a616e8109945/6901cee066bcfa8a215e62c6/main.m3u8" as="fetch">
+	<link rel="preload" href="https://scripts.converteai.net/9afd1484-cb7c-43b2-aa60-a616e8109945/players/6901d73aa83e5df956e5b079/v4/embed.html">
+	<link rel="preload" href="https://scripts.converteai.net/9afd1484-cb7c-43b2-aa60-a616e8109945/players/6901d73aa83e5df956e5b079/v4/player.js" as="script" crossorigin="anonymous">
+	<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script" crossorigin="anonymous">
+	<link rel="preload" href="https://cdn.converteai.net/9afd1484-cb7c-43b2-aa60-a616e8109945/6901d72a71c90509ab760e50/main.m3u8" as="fetch" crossorigin="anonymous">
 	<link rel="dns-prefetch" href="https://cdn.converteai.net">
 	<link rel="dns-prefetch" href="https://scripts.converteai.net">
 	<link rel="dns-prefetch" href="https://images.converteai.net">
@@ -202,7 +203,7 @@ body, html {
 /* Ensure hero section covers full viewport width */
 .hero-countdown-section {
   margin: 0 !important;
-  padding: 60px 0 40px !important;
+  padding: 16px 0 16px !important;
   position: relative !important;
 }
 
@@ -882,8 +883,8 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
 
 /* Hero Countdown Section Styles */
 .hero-countdown-section {
-    background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
-    min-height: auto;
+  background: transparent;
+  min-height: 420px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -898,6 +899,8 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
     text-align: center;
     animation: heroFadeIn 0.8s ease-in;
     padding: 0 20px;
+  position: relative;
+  z-index: 4;
 }
 
 @keyframes heroFadeIn {
@@ -918,7 +921,9 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
     color: #1E5BA8;
     margin-bottom: 2px;
     line-height: 1.1;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    /* White outline for better contrast over video */
+    -webkit-text-stroke: 2px #ffffff;
+    text-shadow: 0 0 2px rgba(255,255,255,0.9), 0 0 8px rgba(255,255,255,0.6);
     animation: heroSlideIn 0.8s ease-out 0.2s both;
     letter-spacing: -0.3px;
 }
@@ -937,9 +942,11 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
 .hero-subtitle {
     font-size: 12px;
     color: white;
-    font-weight: 600;
+    font-weight: 900;
     line-height: 1.2;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    /* Heavy white text with black shadow for contrast */
+    -webkit-text-stroke: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.4);
     animation: heroSlideIn 0.8s ease-out 0.4s both;
 }
 
@@ -1088,24 +1095,42 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
     <img src="logo/logobk.png" alt="BurnPeak Logo" loading="eager" decoding="async">
 </div>
 
-<!-- Hero Countdown Section -->
+<!-- Hero Countdown Section with background video -->
 <section class="hero-countdown-section">
+    <div class="hero-video-bg">
+      <div id="ifr_6901d73aa83e5df956e5b079_wrapper" style="margin:0 auto; width:100%; height:100%; position:absolute; inset:0;">
+        <div id="ifr_6901d73aa83e5df956e5b079_aspect" style="position:relative; padding:75% 0 0 0; height:100%;">
+          <iframe id="ifr_6901d73aa83e5df956e5b079" frameborder="0" allowfullscreen src="about:blank" referrerpolicy="origin" 
+                  style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="hero-overlay" style="background: transparent !important;"></div>
     <div class="hero-container">
 
         <h1 class="hero-main-title">Sick and Tired of Your Belly Fat?</h1>
         <p class="hero-subtitle">Drop It in Less Than 15 Days - Or It's FREE</p>
     </div>
-</section>
+    </section>
 
-<!-- VTurb Video Section (below headline) -->
-<section class="vturb-section">
-  <div class="vturb-container">
-    <div class="vturb-aspect">
-      <vturb-smartplayer id="vid-6901ceed71c90509ab7609e7" style="display: block; margin: 0 auto; width: 100%;"></vturb-smartplayer>
-    </div>
-  </div>
-</section>
-<script type="text/javascript">(function(){var s=document.createElement("script");s.src="https://scripts.converteai.net/9afd1484-cb7c-43b2-aa60-a616e8109945/players/6901ceed71c90509ab7609e7/v4/player.js";s.async=true;document.head.appendChild(s);}())</script>
+<!-- VTurb SDK + set iframe src on load (new id) -->
+<script type="text/javascript">
+(function(){
+  var s=document.createElement('script');
+  s.src='https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js';
+  s.async=true; document.head.appendChild(s);
+})();
+(function(){
+  var setSrc=function(){
+    var el=document.getElementById('ifr_6901d73aa83e5df956e5b079');
+    if(!el) return;
+    el.onload=null;
+    el.src='https://scripts.converteai.net/9afd1484-cb7c-43b2-aa60-a616e8109945/players/6901d73aa83e5df956e5b079/v4/embed.html'+(location.search||'?')+'&vl='+encodeURIComponent(location.href);
+  };
+  if(document.readyState==='complete'||document.readyState==='interactive'){setSrc();}
+  else{document.addEventListener('DOMContentLoaded',setSrc);} 
+})();
+</script>
 
 <!-- Social Proof Section with Carousel -->
 <section style="background: #f8f9fa; padding: 50px 20px;">
@@ -2115,6 +2140,20 @@ if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_c
     }
   }
 
+/* Hero background video and overlay */
+.hero-video-bg { position: absolute; inset: 0; overflow: hidden; z-index: 1; }
+.hero-video-bg vturb-smartplayer { position: absolute; inset: 0; width:100% !important; height:100% !important; display:block; }
+.hero-video-bg iframe, .hero-video-bg video {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  min-width:100%; min-height:100%; width:auto; height:auto; object-fit: cover;
+}
+.hero-video-bg > div { position:absolute; inset:0; }
+.hero-overlay { position: absolute; inset: 0; background: rgba(255, 107, 53, 0.18); z-index: 9999; pointer-events:none; }
+
+@media (max-width: 768px) {
+  .hero-countdown-section { min-height: 360px; }
+}
+
   /* VTurb Video Section */
   .vturb-section { margin: 0 !important; padding: 0 !important; width: 100% !important; background: transparent; }
   .vturb-container { width: 100%; max-width: 100%; margin: 0 auto; }
@@ -2143,10 +2182,12 @@ if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_c
     const formattedDate = `${day}/${month}/${year}`;
 
     let userState = 'your state';
-    fetch('https://ipapi.co/json/')
-        .then(r => r.json())
-        .then(d => { if (d && d.region) userState = d.region; })
-        .catch(() => {});
+    if (location.protocol === 'https:' || location.hostname !== '127.0.0.1') {
+        fetch('https://ipapi.co/json/')
+            .then(r => r.json())
+            .then(d => { if (d && d.region) userState = d.region; })
+            .catch(() => {});
+    }
 
     const baseMessages = [
         () => `🚚 FREE SHIPPING to ${userState} ends TODAY ${formattedDate}! Get it before it's gone! 🔥`,
