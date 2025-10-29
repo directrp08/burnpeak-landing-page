@@ -175,11 +175,41 @@
 
 <style>
 /* Remove default padding and margins for full width */
+* {
+  box-sizing: border-box !important;
+}
+
 body, html {
   margin: 0 !important;
   padding: 0 !important;
   width: 100% !important;
+  min-height: 100vh !important;
   overflow-x: hidden !important;
+}
+
+/* Remove any spacing from Elementor containers */
+.elementor, .elementor-3776, .elementor-element, .e-con, .e-con-inner {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure hero section covers full viewport width */
+.hero-countdown-section {
+  margin: 0 !important;
+  padding: 60px 0 40px !important;
+  position: relative !important;
+}
+
+/* Remove spacing from site wrapper containers */
+.site-main, .page-content, #content, main {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure footer has no white borders */
+.footer-section {
+  margin: 0 !important;
+  width: 100% !important;
 }
 
 :root{
