@@ -228,10 +228,24 @@ body, html {
   --orange-2:#e56600;             /* orange gradient end */
   --light-color:#ffffff;
   --text-color:#1d1d1d;
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans", sans-serif;
 }
 
 /* Scope everything to avoid Elementor collisions */
-#products{font-family:"Nunito Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+#products{font-family:inherit}
+
+/* Global type: normalize font family site-wide */
+html, body { font-family: var(--font-main) !important; }
+section, div, header, footer, main, article, aside, nav,
+h1, h2, h3, h4, h5, h6,
+p, span, a, li, ul, ol,
+button, .btn, label,
+input, select, textarea,
+.cta-section, .footer-section, .comparison-section,
+#products, .promo-banner, .logo-bar,
+.hero-countdown-section, .revolution-text {
+  font-family: var(--font-main) !important;
+}
 
 /* Fix distorted images in Elementor */
 #products .item img{
@@ -761,12 +775,13 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
 .promo-text {
     color: white;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 11px; /* -3px */
     white-space: nowrap;
     padding: 0 16px;
     opacity: 0;
     transform: translateY(8px);
     transition: opacity 250ms ease, transform 250ms ease;
+    text-transform: uppercase;
 }
 
 .promo-text.show {
@@ -779,8 +794,9 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
         height: 40px;
     }
     .promo-text {
-        font-size: 12px;
+        font-size: 9px; /* -3px */
     }
+    .countdown-pill { margin-top: 20px; }
 }
 
 /* Logo bar below promo banner */
@@ -790,6 +806,8 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
     align-items: center;
     justify-content: center;
     background: transparent;
+    position: relative;
+    z-index: 6; /* ensure it's above hero video background */
 }
 .logo-bar img {
     height: 28px;
@@ -832,6 +850,117 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
   .comparison-subtitle { text-align: center; font-size: 20px; color: #666; margin-bottom: 30px; line-height: 1.5; }
   .comparison-table { border: 4px solid #FF6B35; border-radius: 20px; overflow: hidden; background: #fff; }
   .comparison-header { display: grid; grid-template-columns: 1fr 1.3fr 1fr; background: #f8f9fa; align-items: flex-end; padding: 30px 20px 20px; gap: 15px; }
+
+  /* Subtle bounce + shadow for image above comparison card */
+  .comparison-top-image {
+    animation: subtleBounce 3.5s ease-in-out infinite;
+    will-change: transform;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+  }
+
+/* simple fade-in animation */
+.fade-in-up { opacity: 0; transform: translateY(6px); animation: fadeInUp .8s ease forwards; }
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+  @keyframes subtleBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* OzenVitta Section */
+  .ozenvitta-section {
+    background-color: transparent;
+    padding: 40px 20px 0; /* remove bottom space to be flush with next section */
+    margin: 20px 0 0; /* no bottom margin */
+    position: relative;
+    overflow: hidden; /* prevent hero image from invading next section */
+  }
+  .ozenvitta-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: transparent;
+    border-radius: 14px;
+    box-shadow: none;
+    padding: 28px 22px;
+  }
+  .ozenvitta-content {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 20px;
+    align-items: center;
+  }
+  .ozenvitta-title {
+    font-size: 28px;
+    font-weight: 800;
+    text-align: center;
+    color: #1a1a1a;
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .ozenvitta-desc {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+    text-align: center;
+    margin: 0 auto 18px;
+    max-width: 820px;
+  }
+  .ozenvitta-right { position: relative; min-height: 560px; }
+  /* Layering: tape behind, model above */
+  .ozenvitta-visual {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* purely decorative */
+    z-index: 2; /* above the tape */
+  }
+  .ozenvitta-hero-image {
+    width: 100%;
+    max-width: 520px;
+    max-height: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 14px 36px rgba(0,0,0,0.18);
+    position: relative;
+    z-index: 3; /* ensure above tape */
+  }
+
+  /* Ensure next section is flush with OzenVitta */
+  .ozenvitta-section,
+  .ozenvitta-inner,
+  .ozenvitta-right { margin-bottom: 0 !important; padding-bottom: 0 !important; }
+  .ozenvitta-section + .cta-section { margin-top: 0 !important; padding-top: 0 !important; }
+  .ozenvitta-tape {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    max-width: 480px;
+    width: 90%;
+    height: auto;
+    z-index: 1; /* behind model */
+    filter: drop-shadow(0 10px 24px rgba(0,0,0,.08));
+  }
+  /* Reveal on scroll */
+  .reveal-on-scroll { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; will-change: opacity, transform; }
+  .reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
+  .reveal-on-scroll { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    .ozenvitta-section { padding: 20px 14px 0; }
+    .ozenvitta-inner { padding: 18px 14px; }
+    .ozenvitta-content { grid-template-columns: 1fr; }
+    .ozenvitta-title { font-size: 22px; }
+    .ozenvitta-desc { font-size: 15px; }
+    .ozenvitta-hero-image { border-radius: 10px; max-width: 340px; margin: 10px auto 0; }
+    .ozenvitta-right { min-height: 420px; }
+    .ozenvitta-tape { max-width: 320px; }
+    /* On mobile, place image in normal flow to avoid covering headline */
+    .ozenvitta-visual { position: relative; inset: auto; display: flex; justify-content: center; align-items: center; }
+  }
   .product-column { text-align: center; }
   .product-image-box { height: 140px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; }
   .product-image { max-width: 140px; max-height: 140px; object-fit: contain; }
@@ -916,14 +1045,14 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
 
 
 .hero-main-title {
-    font-size: 9px;
+    font-size: 24px;
     font-weight: 900;
-    color: #1E5BA8;
+    color: #ffffff;
     margin-bottom: 2px;
     line-height: 1.1;
-    /* White outline for better contrast over video */
-    -webkit-text-stroke: 2px #ffffff;
-    text-shadow: 0 0 2px rgba(255,255,255,0.9), 0 0 8px rgba(255,255,255,0.6);
+    /* Remove white outline/shadow */
+    -webkit-text-stroke: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.7), 0 6px 18px rgba(0,0,0,0.5);
     animation: heroSlideIn 0.8s ease-out 0.2s both;
     letter-spacing: -0.3px;
 }
@@ -1003,6 +1132,7 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
     font-weight: bold;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
+    margin-top: 28px;
     animation: pulse 2s infinite;
 }
 
@@ -1118,10 +1248,10 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
     font-size: clamp(20px, 5vw, 48px) !important;
     line-height: 1.1 !important;
     margin-bottom: 10px !important;
-    color: #1E5BA8 !important;
+    color: #ffffff !important;
     font-weight: 900 !important;
-    -webkit-text-stroke: 2px #ffffff !important;
-    text-shadow: 0 0 2px rgba(255,255,255,0.9), 0 0 8px rgba(255,255,255,0.6) !important;
+    -webkit-text-stroke: 0 !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.7), 0 6px 18px rgba(0,0,0,0.5) !important;
   }
 
   .hero-subtitle {
@@ -1154,7 +1284,7 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
     }
 
     .hero-container { padding: 0 15px !important; }
-    .hero-main-title { font-size: 20px !important; margin-bottom: 8px !important; }
+    .hero-main-title { font-size: 28px !important; margin-bottom: 8px !important; }
     .hero-subtitle { font-size: 14px !important; }
 
     /* Carousel mobile */
@@ -1163,7 +1293,7 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
   }
 
   @media (max-width: 480px) {
-    .hero-main-title { font-size: 18px !important; line-height: 1.1 !important; }
+    .hero-main-title { font-size: 24px !important; line-height: 1.1 !important; }
     .hero-subtitle { font-size: 12px !important; }
   }
 
@@ -1275,7 +1405,7 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
       padding: 5px 0 !important;
       margin-bottom: 0 !important;
     }
-    .hero-main-title { font-size: 18px !important; margin-bottom: 6px !important; line-height: 1.05 !important; }
+    .hero-main-title { font-size: 22px !important; margin-bottom: 6px !important; line-height: 1.05 !important; }
     .hero-subtitle { font-size: 13px !important; line-height: 1.15 !important; }
     /* Seção Social Proof mais próxima */
     section[style*="background: #f8f9fa"],
@@ -1293,7 +1423,7 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
   /* iPhones específicos (375px - 430px) */
   @media (min-width: 375px) and (max-width: 430px) {
     .hero-countdown-section { min-height: 260px !important; height: 260px !important; padding: 3px 0 !important; }
-    .hero-main-title { font-size: 17px !important; margin-bottom: 5px !important; }
+    .hero-main-title { font-size: 22px !important; margin-bottom: 5px !important; }
     .hero-subtitle { font-size: 12px !important; }
     .revolution-text { padding-bottom: 15px !important; font-size: 1.1rem !important; }
   }
@@ -1304,13 +1434,13 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
   /* iPhone mini (12, 13) - 375px */
   @media (max-width: 375px) {
     .hero-countdown-section { min-height: 240px !important; height: 240px !important; padding: 2px 0 !important; }
-    .hero-main-title { font-size: 16px !important; }
+    .hero-main-title { font-size: 20px !important; }
     .hero-subtitle { font-size: 11px !important; }
   }
 
 .pill-timer {
     font-size: 24px;
-    font-family: 'Courier New', monospace;
+    font-family: var(--font-main) !important;
     background: rgba(255, 255, 255, 0.2);
     padding: 6px 12px;
     border-radius: 8px;
@@ -1435,7 +1565,7 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
 </div>
 
 <!-- Logo Bar -->
-<div class="logo-bar">
+<div class="logo-bar fade-in-up">
     <img src="logo/logobk.png" alt="BurnPeak Logo" loading="eager" decoding="async">
 </div>
 
@@ -1547,6 +1677,38 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
   </div>
 </section>
 
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal-on-scroll');
+    if ('IntersectionObserver' in window && els.length) {
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px' });
+      els.forEach(function(el){ obs.observe(el); });
+    } else {
+      // graceful fallback
+      els.forEach(function(el){ el.classList.add('visible'); });
+    }
+
+    // Safety check on load/scroll in case observer misses
+    function ensureVisible() {
+      els.forEach(function(el){
+        var rect = el.getBoundingClientRect();
+        if (rect.top < (window.innerHeight * 0.9)) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('load', ensureVisible);
+    window.addEventListener('scroll', ensureVisible, { passive: true });
+  })();
+</script>
+
 <!-- Reviews Badge (below carousel) -->
 <div class="reviews-badge-wrap">
   <div class="reviews-badge">
@@ -1561,6 +1723,26 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
   </div>
   
 </div>
+
+<!-- OzenVitta Intro Section (below reviews badge) -->
+<section class="ozenvitta-section">
+  <div class="ozenvitta-inner">
+    <div class="ozenvitta-content">
+      <div class="ozenvitta-text">
+        <h2 class="ozenvitta-title">When was the last time you felt good about your reflection in the mirror?</h2>
+        <p class="ozenvitta-desc">
+          If you can’t remember, it’s time to meet BurnPeak. Improve your relationship with your body and achieve well-being with a supplement designed to support natural and healthy weight loss — boosting your self-esteem and renewing your self-love every single day.
+        </p>
+      </div>
+      <div class="ozenvitta-right">
+        <img class="ozenvitta-tape" src="logo/fita-metrica.jpg" alt="Measuring Tape Background" loading="lazy" decoding="async">
+        <div class="ozenvitta-visual">
+          <img class="ozenvitta-hero-image reveal-on-scroll" src="logo/foto_1.jpg" alt="OzenVitta Lifestyle" loading="lazy" decoding="async" style="margin-bottom:0;" onload="this.classList.add('visible')">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- CTA Section -->
 <section class="cta-section">
@@ -1811,7 +1993,7 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
 <!-- Results Gallery Section -->
 <section class="results-gallery">
   <div class="container">
-    <h2>⭐ Real Results from Our Customers</h2>
+    <h2>Real Results from Our Customers</h2>
     
     <!-- Row 1: Images 1-10 scrolling left -->
     <div class="gallery-scroll">
@@ -1921,6 +2103,10 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
 
 <!-- Comparison Section (moved above second CTA) -->
 <section style="background: transparent; padding: 0 20px;">
+  <!-- Image above comparison card -->
+  <div style="max-width: 1000px; margin: 20px auto 10px; padding: 0; text-align: center;">
+    <img class="comparison-top-image" src="logo/Gemini_Generated_Image_n3h0yrn3h0yrn3h0_bg_removed.png.png" alt="BurnPeak GLP-1 & GIP Advanced" loading="lazy" decoding="async" style="width: 100%; height: auto; display: block; margin: 0 auto;">
+  </div>
   <div class="comparison-section">
     <h2 class="comparison-title">The Natural Revolution That Surpasses <span class="brand-highlight">Ozempic and Mounjaro</span></h2>
     <p class="comparison-subtitle">Same Results • No Injections • No Side Effects • 100% Natural</p>
@@ -2057,14 +2243,14 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
   <div class="guarantee-content">
     <!-- Main Guarantee Badge -->
     <div class="guarantee-badge">
-      <img src="stamps/guarantee-badge.webp" alt="60-Day Money Back Guarantee">
+      <img src="stamps/guarantee-badge.webp" alt="90-Day Money Back Guarantee">
     </div>
     
     <!-- Guarantee Text -->
     <div class="guarantee-text">
       <h2>100% Satisfaction or Your Money Back</h2>
-      <h3 style="color: #f47f2b; margin-bottom: 20px; font-size: 2rem;">60-day Guarantee</h3>
-      <p>We're so confident you'll achieve incredible results that we back BurnPeak with a 100% satisfaction guarantee for 60 days. Start using it as soon as it arrives, and within days, you may notice improved digestion, a clearer mind, and reduced bloating. As you continue your journey, you could start to see gradual improvements in gut health and a more balanced digestive system, making it the perfect time to track your progress. If after several weeks or even months you're not completely satisfied, we'll refund your money in full. With BurnPeak, you're truly in control of your gut health journey.</p>
+      <h3 style="color: #f47f2b; margin-bottom: 20px; font-size: 2rem;">90 days</h3>
+      <p>We're so confident you'll achieve incredible results that we back BurnPeak with a 100% satisfaction guarantee for 90 days. Start using it as soon as it arrives, and within days, you may notice improved digestion, a clearer mind, and reduced bloating. As you continue your journey, you could start to see gradual improvements in gut health and a more balanced digestive system, making it the perfect time to track your progress. If after several weeks or even months you're not completely satisfied, we'll refund your money in full. With BurnPeak, you're truly in control of your gut health journey.</p>
     </div>
     
     <!-- Additional Badges -->
@@ -2320,13 +2506,13 @@ section.py-4.py-md-5[style*="background: #f8f9fa"] .item.promo:hover{
   <div class="guarantee-content">
     <!-- Main Guarantee Badge -->
     <div class="guarantee-badge">
-      <img src="stamps/guarantee-badge.webp" alt="60-Day Money Back Guarantee">
+      <img src="stamps/guarantee-badge.webp" alt="90-Day Money Back Guarantee">
     </div>
     <!-- Guarantee Text -->
     <div class="guarantee-text">
       <h2>100% Satisfaction or Your Money Back</h2>
-      <h3 style="color: #f47f2b; margin-bottom: 20px; font-size: 2rem;">60-day Guarantee</h3>
-      <p>We're so confident you'll achieve incredible results that we back BurnPeak with a 100% satisfaction guarantee for 60 days. Start using it as soon as it arrives, and within days, you may notice improved digestion, a clearer mind, and reduced bloating. As you continue your journey, you could start to see gradual improvements in gut health and a more balanced digestive system, making it the perfect time to track your progress. If after several weeks or even months you're not completely satisfied, we'll refund your money in full. With BurnPeak, you're truly in control of your gut health journey.</p>
+      <h3 style="color: #f47f2b; margin-bottom: 20px; font-size: 2rem;">90 days</h3>
+      <p>We're so confident you'll achieve incredible results that we back BurnPeak with a 100% satisfaction guarantee for 90 days. Start using it as soon as it arrives, and within days, you may notice improved digestion, a clearer mind, and reduced bloating. As you continue your journey, you could start to see gradual improvements in gut health and a more balanced digestive system, making it the perfect time to track your progress. If after several weeks or even months you're not completely satisfied, we'll refund your money in full. With BurnPeak, you're truly in control of your gut health journey.</p>
     </div>
     <!-- Additional Badges -->
     <div class="badges-grid">
