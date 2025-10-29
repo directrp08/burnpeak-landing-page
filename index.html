@@ -248,6 +248,49 @@
 /* clean up if Elementor adds its own background-image */
 #products .button-bg::after{display:none}
 
+/* === SECOND PRODUCTS SECTION (same style as first) === */
+/* Price/text colors */
+section.py-4.py-md-5[style*="background: #f8f9fa"] .price b,
+section.py-4.py-md-5[style*="background: #f8f9fa"] .totals,
+section.py-4.py-md-5[style*="background: #f8f9fa"] .savings b{color:var(--text-color)}
+section.py-4.py-md-5[style*="background: #f8f9fa"] .savings b i{color:#ff9f00}
+
+/* Headers */
+section.py-4.py-md-5[style*="background: #f8f9fa"] .kit3 .d-none.d-md-block .py-3.pb-2{background:var(--primary-color) !important; color:#fff}
+section.py-4.py-md-5[style*="background: #f8f9fa"] .kit3 .d-none.d-md-block > .w-100{background:var(--primary-color) !important}
+section.py-4.py-md-5[style*="background: #f8f9fa"] .kit1 .d-none.d-md-block .py-3.pb-2,
+section.py-4.py-md-5[style*="background: #f8f9fa"] .kit2 .d-none.d-md-block .py-3.pb-2{
+  background:#ffc72c !important;
+  color:#fff;
+}
+section.py-4.py-md-5[style*="background: #f8f9fa"] .kit1 .d-none.d-md-block > .w-100,
+section.py-4.py-md-5[style*="background: #f8f9fa"] .kit2 .d-none.d-md-block > .w-100{
+  background:#ffc72c !important;
+}
+
+/* Buttons */
+section.py-4.py-md-5[style*="background: #f8f9fa"] .btn{border:none; font-weight:900; letter-spacing:.02em}
+/* side cards: yellow gradient, dark text */
+section.py-4.py-md-5[style*="background: #f8f9fa"] .kit1 .button-bg,
+section.py-4.py-md-5[style*="background: #f8f9fa"] .kit2 .button-bg{
+  background:linear-gradient(180deg, var(--yellow-1), var(--yellow-2)) !important;
+  color:#000 !important;
+  box-shadow:0 6px 0 #d48f00, 0 6px 16px rgba(0,0,0,.12);
+  border:1px solid #f7c23e;
+}
+section.py-4.py-md-5[style*="background: #f8f9fa"] .kit1 .button-bg:hover,
+section.py-4.py-md-5[style*="background: #f8f9fa"] .kit2 .button-bg:hover{filter:brightness(.98)}
+/* middle card: orange gradient, white text */
+section.py-4.py-md-5[style*="background: #f8f9fa"] .kit3 .button-bg{
+  background:linear-gradient(180deg, var(--orange-1), var(--orange-2)) !important;
+  color:#fff !important;
+  box-shadow:0 6px 0 #b55300, 0 6px 16px rgba(0,0,0,.12);
+  border:1px solid #f07a23;
+}
+
+/* clean up if Elementor adds its own background-image */
+section.py-4.py-md-5[style*="background: #f8f9fa"] .button-bg::after{display:none}
+
 /* Header Styles */
 .header-section {
   background: linear-gradient(135deg, #f47f2b 0%, #e56600 100%);
