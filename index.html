@@ -2959,6 +2959,102 @@ if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_c
     setInterval(updateTimer, 1000); // Update every second
 })();
 </script>
+</script>
+
+  <!-- Embed helper: open checkout in new tab + post height to parent -->
+  <script>
+  (function () {
+    // 1) CONFIG: domínios que DEVEM abrir em nova aba (checkout)
+    var TARGET_HOSTS = [
+      'burnpeak.mycartpanda.com',
+      'app.mycartpanda.com'
+    ];
+
+    // 2) Posta a altura para o parent (scroll unificado)
+    function postHeight() {
+      var h = Math.max(
+        document.body.scrollHeight, document.documentElement.scrollHeight,
+        document.body.offsetHeight, document.documentElement.offsetHeight,
+        document.body.clientHeight, document.documentElement.clientHeight
+      );
+      // Se souber o domínio do pai, substitua '*' por 'https://SEU-DOMINIO'
+      window.parent.postMessage({ type: 'embedHeight', height: h }, '*');
+    }
+
+    // Responde pedido explícito do pai
+    window.addEventListener('message', function (ev) {
+      if (ev && ev.data && ev.data.type === 'requestEmbedHeight') {
+        setTimeout(postHeight, 0);
+      }
+    });
+
+    // 3) Força checkout abrir em nova aba (e fallback via parent)
+    function isTarget(url) {
+      try { return TARGET_HOSTS.includes(new URL(url, location.href).host); }
+      catch (e) { return false; }
+    }
+
+    function ensureBlank(a) {
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+    }
+
+    function onAnchorClick(ev) {
+      var a = ev.currentTarget;
+      var href = a && a.href;
+      if (!href || !isTarget(href)) return;
+      ev.preventDefault();
+      // Tenta abrir direto
+      var w = window.open(href, '_blank', 'noopener');
+      if (!w) {
+        // Fallback: pede para o parent abrir em nova aba
+        try {
+          window.parent.postMessage({ type: 'openInNewTab', url: href }, '*');
+        } catch (e) {}
+      }
+    }
+
+    function wireAnchors() {
+      document.querySelectorAll('a[href]').forEach(function (a) {
+        if (isTarget(a.href)) {
+          ensureBlank(a);
+          a.removeEventListener('click', onAnchorClick);
+          a.addEventListener('click', onAnchorClick);
+        }
+      });
+    }
+
+    // Caso existam formulários que postem ao checkout
+    function onFormSubmit(ev) {
+      var form = ev.target;
+      var action = form && form.action;
+      if (action && isTarget(action)) {
+        form.setAttribute('target', '_blank');
+      }
+    }
+
+    // Inicialização
+    window.addEventListener('load', function () {
+      wireAnchors();
+      postHeight();
+    });
+    document.addEventListener('submit', onFormSubmit, true);
+
+    // Observa mudanças (SPA, lazy-load) e atualiza
+    setInterval(function () { wireAnchors(); postHeight(); }, 1500);
+    try {
+      new MutationObserver(function () {
+        setTimeout(function () { wireAnchors(); postHeight(); }, 50);
+      }).observe(document.body, { childList: true, subtree: true, attributes: true });
+      if ('ResizeObserver' in window) {
+        new ResizeObserver(function () { postHeight(); }).observe(document.documentElement);
+      }
+    } catch (e) {}
+
+    window.addEventListener('resize', function () { setTimeout(postHeight, 50); });
+  })();
+  </script>
+
 </body>
 </html>
 
